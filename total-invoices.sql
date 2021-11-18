@@ -1,7 +1,7 @@
-SELECT customers.FirstName || ' ' || UPPER(customers.LastName) AS FullName, SUM(UnitPrice) AS AllInvoices
+SELECT FirstName || ' ' || Upper(LastName) AS FullName, SUM(UnitPrice) AS ALLInvoices
 FROM invoices
-INNER JOIN invoice_items ON invoice_items.InvoiceId= invoices.InvoiceId
-INNER JOIN customers ON invoices.CustomerId= customers.CustomerId
+INNER JOIN invoice_items ON invoices."InvoiceId" = invoice_items."InvoiceId"
+INNER JOIN customers ON invoices."CustomerId" = customers."CustomerId"
 GROUP BY customers.CustomerId
-HAVING AllInvoices > 38
+HAVING ALLInvoices > 38
 ORDER BY FirstName
